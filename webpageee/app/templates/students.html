@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block container1 %}
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg py-3 navbar-light bg-light">
+        <a class="navbar-brand" href="/">STUDENT INFORMATION SYSTEM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="/student">STUDENT<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/course">COURSES</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+<!-- SEARCH BAR -->
+    <form method="POST" action="{{ url_for('student.get_student') }}">
+    <div class="input-group col-md-10 mx-auto text-center">
+        <input type="text" class="form-control rounded" name="studentsearch" placeholder="Search Student">
+        <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+    </div>
+        <div style="padding: 10px; margin-top: 10px;"> 
+            <a class="btn btn-success" href="/student/add">CREATE STUDENT</a>
+        </div>
+        </div>
+    </form>
+        
+    <!-- Table Container -->
+    <div class="table-container col-md-12 mx-auto text-center">
+        <!-- Scroll Bar -->
+        <div class="scrollbar" style="max-height: 430px; overflow: auto;">
+            <!-- Table -->
+            <table class="table">
+                <!-- Table header -->
+                <!-- Add table header according to your model -->
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Student ID</th>
+                        <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Student Name</th>
+                        <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Student Course</th>
+                        <!-- Add other table headers -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows -->
+                    <!-- Loop through the students and display their information -->
+                    {% if students %}
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.student_id }}</td>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.course_name }}</td>
+                        <td>
+                            <form action="/student/update" method="POST">
+                                <input type="hidden" name="student_id" value="{{ student.student_id }}">
+                                <a href="{{ url_for('student.update_student', student_id = student.student_id) }}" class="btn btn-success col-md-10" type="submit">Edit</a>
+                            </form>
+                            <button type="button" class="btn btn-danger col-md-10" id="deleteStudent" student-id="{{student.student_id}}" onclick="deleteStudent(this)">
+                                <i class="far fa-trash-alt"></i>Delete
+                            </button>
+                        </td>
+                        
+                        <!-- Display other student information -->
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% endblock %}
+    

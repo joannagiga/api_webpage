@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <style>
+    /* Custom CSS to replicate the green container style */
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0; /* Background color for demonstration */
+    }
+
+    .box {
+      max-width: 650px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #008080;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .buttons-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background-color: #008080;
+      border-color: #008080;
+    }
+
+    .btn-primary:hover {
+      background-color: #005353;
+      border-color: #005353;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>Student Information System</h1>
+    <div class="buttons-group">
+      <a href="/student" class="btn btn-primary btn-lg">Student</a>
+      <a href="/course/" class="btn btn-primary btn-lg">Course</a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

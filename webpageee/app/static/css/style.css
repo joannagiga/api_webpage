@@ -1,0 +1,215 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 650px;
+  padding: 28px;
+  margin: 20px auto; /* Center the container */
+  border-radius: 10px;
+  background-color: #008080;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  color: #fff;
+  padding-bottom: 8px;
+  border-bottom: 1px solid silver;
+}
+
+.student-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.input-box {
+  width: 100%; /* Set width to 100% for single column */
+  padding-bottom: 15px;
+}
+
+.input-box .details {
+  color: #fff;
+  font-weight: bold;
+}
+
+.input-box label,
+.gender-title {
+  width: 100%; /* Set width to 100% for single column */
+  color: #fff;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.input-box input,
+.input-box select {
+  height: 40px;
+  width: 100%; /* Set width to 100% for single column */
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.input-box:is(:focus, :valid) {
+  box-shadow: 0 3px 6px;
+}
+
+.submit-button {
+  height: 30px;
+  width: 100%; /* Set width to 100% for single column */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  color: #fff;
+  background-color: #008080;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px; /* Add margin for separation */
+}
+
+.submit-button:hover {
+  background-color: #005353;
+}
+/* Add styling for the photo upload input */
+.input-box input[type="file"] {
+  height: 40px;
+  width: 95%;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  margin-top: 10px; /* Adjust spacing as needed */
+  color: #000; /* Adjust text color as needed */
+}
+
+/* Style adjustments for better appearance */
+.input-box label,
+.input-box input[type="file"] {
+  width: 100%;
+}
+
+.input-box input[type="file"]:is(:focus, :valid) {
+  box-shadow: 0 3px 6px;
+}
+/* Add your existing styles... */
+
+.input-box label,
+.input-box input[type="file"] {
+    width: 100%;
+}
+
+.input-box input[type="file"] {
+    height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-top: 10px; /* Adjust spacing as needed */
+    color: #000; /* Adjust text color as needed */
+}
+
+/* Style adjustments for better appearance */
+.input-box input[type="file"]:is(:focus, :valid) {
+    box-shadow: 0 3px 6px;
+}
+
+#student_info_image {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border: 2px solid gray;
+    border-radius: 50%;
+    display: flex;
+}
+
+/* Styles for the smaller student photo in the input box */
+#student_photo {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+/* Additional styling for the upload button */
+#upload-photo-button {
+    margin-top: 10px;
+}
+
+.input-box label,
+.input-box input[type="file"] {
+    width: 100%;
+}
+
+.input-box input[type="file"] {
+    height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-top: 10px; /* Adjust spacing as needed */
+    color: #000; /* Adjust text color as needed */
+}
+
+/* Style adjustments for better appearance */
+.input-box input[type="file"]:is(:focus, :valid) {
+    box-shadow: 0 3px 6px;
+}
+
+#student_info_image {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border: 2px solid gray;
+    border-radius: 50%;
+    display: flex;
+}
+
+#student_photo {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+/* Additional styling for the upload button */
+#upload-photo-button {
+    margin-top: 10px;
+}
+
+/* Additional styling for better alignment */
+#student_image_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-box {
+  width: 100%;
+  padding-bottom: 15px;
+  max-width: 400px; /* Set a maximum width for the input boxes */
+  margin: 0 auto; /* Center the input boxes */
+}
+
+.input-box label,
+.input-box input,
+.input-box select {
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+/* Add styling for the photo upload input */
+.input-box input[type="file"] {
+  width: 100%;
+  max-width: 300px; /* Set a maximum width for the file input */
+  margin-top: 10px;
+}

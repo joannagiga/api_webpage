@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block container1 %}
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg py-3 navbar-light bg-light">
+      <a class="navbar-brand" href="/">STUDENT INFORMATION SYSTEM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/student">STUDENT</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/course">COURSES<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/college">COLLEGES</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- //NAVIGATION BAR -->
+
+
+<!-- SEARCH BAR -->
+<form method="POST" action="/course/search">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="input-group col-md-10 mx-auto text-center">
+    <label class="input-group-prepend">
+      <label class="input-group-text">Filter by:</label>
+    </label>
+    <select name="filter" class="form-control">
+      <option value="">All</option>
+      <option value="course_code">Course Code</option>
+      <option value="course_name">Course Name</option>
+      <option value="college_code">College</option>
+    </select>
+    <input type="text" class="form-control rounded" name="course_search" placeholder="Search Course">
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </div>
+    <div style="padding: 10px; margin-top: 10px;"> 
+      <a class="btn btn-success" href="/course/add">ADD COURSE</a>
+    </div>
+  </div>
+</form>
+
+
+<!-- TABLE CONTAINER -->
+<div class="table-container col-md-10 mx-auto text-center">
+  <!-- SCROLL BAR -->
+  <div class="scrollbar" style="max-height: 430px; overflow: auto;">
+    <!-- TABLE -->
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Course Code</th>
+          <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Course Name</th>
+          <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">College Code</th>
+        
+          <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <td>{{course.course_code}}</td>
+          <td>{{course.course_name}}</td>
+          <td>{{course.college_code}}</td>
+          
+          <td>
+            <form action="/course/edit" method="get">
+              <input type="hidden" name="course_code" value="{{ course.course_code }}">
+              <input type="hidden" name="course_name" value="{{ course.course_name}}">
+              <input type="hidden" name="college_code" value="{{ course.college_code}}">
+              <button type="submit" class="btn btn-success"><i class="fas fa-edit"></i>Edit</button>
+            </form>
+            <button type="button" class="btn btn-danger" id="deleteCourse" course-code="{{course.course_code}}"
+              csrf-token="{{csrf_token()}}" onclick="deleteCourse(this)"><i class="far fa-trash-alt"></i>Delete</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

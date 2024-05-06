@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block container1 %}
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg py-3 navbar-light bg-light">
+        <a class="navbar-brand" href="/">STUDENT INFORMATION SYSTEM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="/student">STUDENT</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="/course">COURSES<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+
+<!-- SEARCH BAR -->
+    <form method="POST" action="{{ url_for('course.get_course') }}">
+        <div class="input-group col-md-10 mx-auto text-center">
+            <input type="text" class="form-control rounded" name="course_search" placeholder="Search Course">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </div>
+        </div>
+        <div style="padding: 10px; margin-top: 10px;"> 
+            <a class="btn btn-success" href="/course/add">ADD COURSE</a>
+        </div>
+    </form>
+
+        
+    <!-- Table Container -->
+    <div class="table-container col-md-12 mx-auto text-center">
+        <!-- Scroll Bar -->
+        <div class="scrollbar" style="max-height: 430px; overflow: auto;">
+            <!-- Table -->
+            <table class="table">
+                <!-- Table header -->
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Course ID</th>
+                        <th scope="col" style="position: sticky; top: 0; background-color: #f5f5f5; z-index: 1;">Course Name</th>
+                        <!-- Add other table headers if needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Table rows -->
+                    <!-- Loop through the courses and display their information -->
+                    {% if courses %}
+                        {% for course in courses %}
+                            <tr>
+                                <td>{{ course.course_id }}</td>
+                                <td>{{ course.course_name }}</td>
+                                <td>
+                                    <form action="/course/update/{{ course.course_id }}" method="get">
+                                        <button type="submit" class="btn btn-success col-md-12"><i class="fas fa-edit"></i>Edit</button>
+                                    </form>
+                                    <button type="button" class="btn btn-danger col-md-12 mt-2" id="deleteCourse" course-id="{{ course.course_id }}" onclick="deleteCourse(this)">
+                                        <i class="far fa-trash-alt"></i>Delete
+                                    </button>
+                                </td>
+                                
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
